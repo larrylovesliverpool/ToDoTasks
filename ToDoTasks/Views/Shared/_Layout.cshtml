@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - To Do </title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+
+        <title>@Page.Title</title>
+
+        @RenderSection("head", required: false)
+    </head>
+    <body>
+        <!-- main body -->
+        <div class="container">
+        @RenderBody()
+        </div>
+
+        <!-- footer -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12" style="background-color:black;color:white">
+                    <div><br /></div>
+                    <footer>
+                        @{ Html.RenderPartial("../Shared/_SystemInformation");}
+                    </footer>
+                    <div><br /></div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

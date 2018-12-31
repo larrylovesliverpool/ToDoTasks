@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Tasks>
+  <Task>
+    <Id>1</Id>
+    <Description>Feed the Cat</Description>
+    <Completed>False</Completed>
+    <Deleted>False</Deleted>
+  </Task>
+  <Task>
+    <Id>2</Id>
+    <Description>Walk the Dog</Description>
+    <Completed>False</Completed>
+    <Deleted>False</Deleted>
+  </Task>
+  <Task>
+    <Id>3</Id>
+    <Description>Bake a Cake</Description>
+    <Completed>False</Completed>
+    <Deleted>False</Deleted>
+  </Task>
+  <Task>
+    <Id>4</Id>
+    <Description>Feed the Goldfish</Description>
+    <Completed>False</Completed>
+    <Deleted>False</Deleted>
+  </Task>
+</Tasks>
