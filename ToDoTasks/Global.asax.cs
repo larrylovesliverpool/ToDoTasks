@@ -5,6 +5,7 @@ using System.Web.Routing;
 using ToDoTasks;
 using ToDoTasks.Helper;
 using ToDoTasks.Helper.Logger;
+using WebSite.Infrastructure;
 
 /* application start methods */
 [assembly: PreApplicationStartMethod(typeof(MvcApplication), "Register")]
@@ -33,8 +34,7 @@ namespace ToDoTasks
             // **************
             // IoC initialise
             // **************
-            //StructureMapResolver = new StructureMapDependencyResolver(BootStrapper.ConfigureStructureMap());
-            //DependencyResolver.SetResolver(StructureMapResolver);
+            DependencyResolver.SetResolver(new NinjectDependencyResolver());
 
             // **********
             // Automapper

@@ -3,12 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using ToDoTasks.Domain.DataTransferObjects;
 using ToDoTasks.Service;
 using ToDoTasks.ViewModels;
+using AutoMapper;
+using ToDoTasks.Helper.Views;
 
 namespace ToDoTasks.Helper.View
 {
-    public class ToDoTasksViewHelper
+    public class ToDoTasksViewHelper : IToDoTasksViewhelper
     {
         public IToDoTasksService service = null;
         private ToDoTasksViewModel _vm;
@@ -28,12 +31,12 @@ namespace ToDoTasks.Helper.View
 
         public ToDoTasksViewHelper() {
 
+            /* default service, replace with Ioc, Di */
             service = new ToDoTasksService();
         }
 
-    public ToDoTasksViewHelper(IToDoTasksService service) {
+        public ToDoTasksViewHelper(IToDoTasksService service) {
 
-            if( service != null)
                 this.service = service;
         }
 
@@ -46,7 +49,7 @@ namespace ToDoTasks.Helper.View
             // view model
             Vm = new ToDoTasksViewModel();
             // Dto
-            var dto = service.Generate();
+            ToDoTasksDto dto = service.Generate();
 
             // map to Vm
 

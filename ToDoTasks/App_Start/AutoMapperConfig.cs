@@ -1,5 +1,7 @@
 ﻿
 using AutoMapper;
+using ToDoTasks.Domain.DataTransferObjects;
+using ToDoTasks.ViewModels;
 
 namespace ToDoTasks
 {
@@ -13,9 +15,12 @@ namespace ToDoTasks
 
             //Mapper.Initialize(cfg => {
             //    cfg.CreateMap<Domain, VM>();
-            //    cfg.CreateMap<LatestBookMark, VM_LatestBookMark>();
+            //    cfg.CreateMap<Domain, dto>();
             //});
 
+            Mapper.Initialize(cfg => {
+                cfg.CreateMap<ToDoTasksDto, ToDoTasksViewModel>();
+            });
         }
     }
 }
