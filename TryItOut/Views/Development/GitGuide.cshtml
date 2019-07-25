@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "GitGuide";
+    Layout = "~/Views/Shared/_LayoutDevelopment.cshtml";
+}
+
+<h2>Essential Git Commands</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <!-- stash -->
+        <div>
+            <h6>Stashing</h6>
+            <p>Shelve and restore incomplete changes</p>
+        </div>
+
+        <div class="row">
+            <div>
+                git stash
+            </div>
+            <div>
+                Temporarily stores all modiﬁed tracked ﬁles
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                git stash pop
+            </div>
+            <div>
+                Restores the most recently stashed ﬁles
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                git stash list
+            </div>
+            <div>
+                Lists all stashed changesets
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                git stash drop
+            </div>
+            <div>
+                Discards the most recently stashed changeset
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <!-- redo commits -->
+        <div class="row">
+            <div>
+                git reset [commit]
+            </div>
+            <div>
+                Undoes all commits after [commit], preserving changes locally
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                git reset --hard [commit]
+            </div>
+            <div>
+                Discards all history and changes back to the speciﬁed commit
+            </div>
+        </div>
+    </div>
+ </div>
+
+<!-- ***** -->

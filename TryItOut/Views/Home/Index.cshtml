@@ -1,0 +1,57 @@
+﻿<!-- Home page -->
+
+@model TryItOut.ViewModels.HomeViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- small media display and above -->
+<div class="row">
+    <div class="visible-sm visible-md visible-lg top_menu">
+
+        <ul class="top_menu_list">
+            <li class="top_menu_list_item">@Html.ActionLink("About", "About", "Home", null, new { @class = "top_menu_list_item_anchor" })</li>
+            <li class="top_menu_list_item">@Html.ActionLink("Me", "Index", "Home", null, new { @class = "top_menu_list_item_anchor" })</li>
+        </ul>
+
+    </div>
+</div>
+
+<div class="row">
+    <!-- three column layout -->
+    <section class="col-sm-9 col-md-8 col-sm-push-3 col-md-push-2">
+        <div class="MainContent">
+
+        </div>
+    </section>
+
+    <!-- left hand column -->
+    <aside class="col-sm-3 col-md-2 col-sm-pull-9 col-md-pull-8">
+        @Html.ActionLink("Users", "RegisteredUsers", "Person", null, new { @class = "btn btn-default btn-block" })
+        @*@Html.ActionLink("ToDo Tasks", "ToDo", "ToDoTasks", null, new { @class = "btn btn-default btn-block" })*@
+        @Html.ActionLink("Development", "Alt", "Development", null, new { @class = "btn btn-default btn-block" })
+        @Html.ActionLink("Login", "Login", "Person", null, new { @class = "btn btn-default btn-block" })
+        @Html.ActionLink("Railways", "Index", "TrainsPlanesCars", null, new { @class = "btn btn-default btn-block" })
+
+    </aside>
+
+    <!-- right hand column -->
+    <aside class="col-sm-12 col-md-2"></aside>
+</div>
+
+<!-- x-small media display only -->
+<div class="row">
+    <div class="visible-xs top_menu">
+
+        <ul class="top_menu_list">
+            <li class="top_menu_list_item">@Html.ActionLink("About", "About", "Home", null, new { @class = "top_menu_list_item_anchor" })</li>
+            <li class="top_menu_list_item">@Html.ActionLink("Me", "Index", "Home", null, new { @class = "top_menu_list_item_anchor" })</li>
+        </ul>
+
+    </div>
+</div>
+
+
+<!-- -->

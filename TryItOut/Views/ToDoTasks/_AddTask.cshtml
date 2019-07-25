@@ -1,0 +1,70 @@
+﻿@model TryItOut.Areas.ToDoTasks.ViewModels.NewTaskViewModel
+
+<link href="~/Scripts/Select2/select2.css" rel="stylesheet" />
+<link href="~/Scripts/Select2/Select2-Bootstrap.css" rel="stylesheet" />
+
+<script src="~/Scripts/Select2/select2.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.js-example-basic-single').select2();
+    });
+</script>
+
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12">
+        <span>Add a new Task</span>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12">
+
+    </div>
+</div>
+
+<!-- form -->
+@using (Html.BeginForm("AddTaskSave", "ToDoTasks", FormMethod.Post))
+{
+    <div class="form-horizontal">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group required">
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-lg-3" })
+                    <div class="col-lg-9">
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group required">
+                    @Html.LabelFor(model => model.RequiredBy, htmlAttributes: new { @class = "control-label col-lg-3" })
+                    <div class="col-lg-9">
+                        @Html.EditorFor(model => model.RequiredBy, new { htmlAttributes = new { @class = "form-control datecontrol" } })
+                        @Html.ValidationMessageFor(model => model.RequiredBy, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group required">
+                    @Html.LabelFor(model => model.type, htmlAttributes: new { @class = "control-label col-lg-3" })
+                    <div class="col-lg-9">
+
+                        @Html.DropDownList("StudentGender",
+                                            new SelectList(Enum.GetValues(typeof(TryItOut.Areas.ToDoTasks.ViewModels.TaskType))),
+                                            "Select Task Type",
+                                            new { @class = "js-example-basic-single js-states form-control" })
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-offset-1 col-sm-11">
+            @Html.ValidationSummary(false)
+        </div>
+    </div>
+
+    <!-- Default post back btn -->
+    <input type="submit" value="Save" class="btn" name="btn" />
+    <!-- Cancel uses formaction for different actionresult in controller and no validation -->
+    <input type="submit" value="Cancel" class="btn" name="btn" formaction="@(Url.Action("AddTaskCancel"))" formnovalidate="formnovalidate" />
+}
+
+<!-- form -->

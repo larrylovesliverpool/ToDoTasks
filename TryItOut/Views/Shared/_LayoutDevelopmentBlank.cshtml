@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+    <title>Development</title>
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/datatablesCss")
+
+    <!-- load here as need by mark up, datatables -->
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/datatable")
+    @Scripts.Render("~/bundles/site")
+    @Scripts.Render("~/bundles/easing")
+
+</head>
+<body>
+
+    <div id="RenderBody">
+        @RenderBody()
+    </div>
+
+</body>
+</html>

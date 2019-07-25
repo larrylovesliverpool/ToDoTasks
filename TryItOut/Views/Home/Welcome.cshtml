@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Welcome";
+    Layout = "~/Views/Shared/_LayoutWelcome.cshtml";
+}
+
+<!-- background Image-->
+
+    <section class="row">
+
+        <div class="img-responsive fill-screen fixed-attachment" style="background-image: url(../../Content/images/SoftwareDevelopment.png);">
+
+            <!-- down button/arrow -->
+            <div class="userlocked-button">
+                <span id="userlocked"><img src="~/Content/images/User-Locked.png" /></span>
+            </div>
+
+        </div>
+
+    </section>
+
+    <script>
+
+        $(function () {
+
+            /* Execute once on page load, ensure image is resize to screen */
+            $(".fill-screen").css("height", window.innerHeight-35);
+
+            $(window).on("resize", function () {
+                $(".fill-screen").css("height", window.innerHeight-35);
+            });
+
+            $("#userlocked").on("click", function () {
+                window.location.href = '@Url.Action("Login", "Person")';
+            });
+
+        });
+
+    </script>

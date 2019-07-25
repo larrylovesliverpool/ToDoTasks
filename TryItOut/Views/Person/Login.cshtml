@@ -1,0 +1,134 @@
+﻿@model TryItOut.ViewModels.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<link href="~/Content/Login.css" rel="stylesheet" />
+
+<script>
+
+    $(function () {
+
+        $("#ForgottenPassword").on("click", function () {
+
+            $("#SectionLogin").addClass("hidden");
+            $("#SectionForgottenPassword").removeClass("hidden").addClass("show");
+        });
+
+        $("#Register").on("click", function () {
+
+            $("#SectionLogin").addClass("hidden");
+            $("#SectionRegister").removeClass("hidden").addClass("show");
+        });
+    });
+
+</script>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "LoginDetails", name = "LoginDetails" }))
+{
+    <!-- 3 Columns standard media device, Center column for login. Small media device single column -->
+
+    <div class="row">
+
+        <!-- Login -->
+        <section id="SectionLogin" class="col-sm-8 col-md-6 col-sm-push-2 col-md-push-3">
+            <article class="MainContent">
+                <!-- center contents -->
+
+                <h3>Login</h3>
+
+                <div class="form-horizontal">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group required">
+                                @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                                <div class="col-sm-10">
+                                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", placeholder = "Username" } })
+                                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group required">
+                                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "col-sm-2 control-label" })
+                                <div class="col-sm-10">
+                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password", type = "password" } })
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-lg-offset-1">
+                        <input type="submit" value="Login" class="btn" />
+                        <input type="submit" value="Cancel" class="btn" name="btn" formaction="@(Url.Action("Welcome","home"))" formnovalidate="formnovalidate" />
+                    </div>
+                </div>
+
+                <div class="tasklinks">
+                    <span id="ForgottenPassword">Forgotten Password</span>
+                    &nbsp;|&nbsp;
+                    <span id="Register">Register</span>
+                </div>
+
+                <div class="LoginMessage">
+                    @Model.Message
+                </div>
+
+            </article>
+        </section>
+
+        <!-- Register -->
+        <section id="SectionRegister" class="col-sm-8 col-md-6 col-sm-push-2 col-md-push-3 hidden">
+            <h3>Register</h3>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <p>Registration on this site requires you to enter an active Email address and a password.</p>
+                    <p>If you wish to proceed click the continue button below else cancel.</p>
+                    <input type="submit" value="Cancel" class="btn" name="RegistrationCancel" formaction="@(Url.Action("Welcome","home"))" formnovalidate="formnovalidate" />
+                    <input type="submit" value="Continue" class="btn" name="RegistrationContinue" formaction="@(Url.Action("Register","Person"))" formnovalidate="formnovalidate" />
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Forgotten Password -->
+        <section id="SectionForgottenPassword" class="col-sm-8 col-md-6 col-sm-push-2 col-md-push-3 hidden">
+            <h3>Forgotten Password</h3>
+
+            <div class="row">
+                <p>Hard luck !</p>
+                <input type="submit" value="Continue" class="btn" name="ForgottenPasswordContinue" formaction="@(Url.Action("Welcome","home"))" formnovalidate="formnovalidate" />
+            </div>
+
+        </section>
+
+        <!-- left -->
+        <aside class="col-sm-2 col-md-3 col-sm-pull-8 col-md-pull-3 hidden-xs">
+            <h4 class="Column-left-header">
+                <!-- left header -->
+            </h4>
+            <div class="Column-left-Contents">
+                <!-- left contents -->
+            </div>
+        </aside>
+
+        <!-- right -->
+        <aside class="col-sm-2 col-md-3 hidden-xs">
+            <h4 class="Column-right-header">
+                <!-- right header -->
+            </h4>
+            <div class="Column-right-Contents">
+                <!-- right contents -->
+            </div>
+        </aside>
+    </div>
+
+}

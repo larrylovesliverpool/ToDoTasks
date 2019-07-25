@@ -1,0 +1,55 @@
+﻿
+@model TryItOut.ViewModels.RailwayManufacturerEditViewModel
+
+@using TryItOut.ViewModels
+
+<h2>Locomotive Classification</h2>
+
+<!-- form -->
+@using (Html.BeginForm("LocoTypeEditNew", "TrainsPlanesCars", FormMethod.Post))
+{
+    <div class="row">
+        <!-- row has two columns -->
+        <div class="col-md-9">
+            <div class="form-horizontal">
+                <div class="row">
+                    <div class="col-xs-12">
+
+                        <!-- Name -->
+                        <div class="form-group required">
+                            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-3 col-lg-3" })
+                            <div class="col-md-9 col-lg-9">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-offset-1 col-sm-11">
+                        @Html.ValidationSummary(false)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+
+        </div >
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- Default post back btn -->
+            <input type="submit" value="Submit" class="btn" name="btn" />
+            <!-- Cancel uses formaction for different actionresult in controller and no validation -->
+            <input type="submit" value="Cancel" class="btn" name="btn" formaction="@(Url.Action("LocoType","TrainsPlanescars"))" formnovalidate="formnovalidate" />
+        </div>
+    </div>
+}
+
+
+<!-- form -->

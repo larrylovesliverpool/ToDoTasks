@@ -1,0 +1,113 @@
+﻿@model TryItOut.ViewModels.LocomotivesDetailsViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/tryitout/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Trains Planes and Cars</h2>
+
+<!-- Menu header row -->
+
+<div class="row">
+    <div class="col-sm-12 ">
+
+        <!-- Admin button -->
+        <div class="btn-group pull-right">
+
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin&nbsp;<span class="caret"></span>
+
+            </button>
+            <ul class="dropdown-menu">
+
+                <li>@Html.ActionLink("DCC Decoders", "RailwayDecoders", "TrainsPlanesCars", null, new { @class = "" })</li>
+                <li>@Html.ActionLink("Manufacturers", "RailwaysManufacturer", "TrainsPlanesCars", null, new { @class = "" })</li>
+                <li>@Html.ActionLink("Locomotive Types", "LocoType", "TrainsPlanesCars", null, new { @class = "" })</li>
+
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+@{
+    if (!Model.HasLocomotives)
+    {
+        <p>@Model.Message.Text</p>
+    }
+    else
+    {
+        <table class="table @*table-striped*@">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Manufacturer</th>
+                    <th>Year Purchased</th>
+                    <th>Decoder</th>
+                    <th>DCC Id</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var loco in Model.Locomotives)
+                {
+                <tr>
+                    <td data-identifier="@loco.LocoId" data-expanded="false">
+                        <!-- +/- image -->
+                        <span id="ExpandDetails" class="glyphicon glyphicon-plus-sign"></span>
+                    </td>
+                    <td>@loco.Name</td>
+                    <td>@loco.Description</td>
+                    <td>@loco.ClassificationDetails</td>
+                    <td>@loco.Manufacturer</td>
+                    <td>@loco.YearPurchased</td>
+                    <td>@loco.DecoderDetails</td>
+                    <td>@loco.DCCValue</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        @Html.ActionLink("New*", "LocoEditNew", "TrainsPlanesCars", null, new { @class = "btn btn-default" })
+        
+        @Html.ActionLink("Back", "index", "Home", null, new { @class = "btn btn-default" })
+    </div>
+</div>
+
+<script>
+
+    /* Jquery document on load */
+
+    jQuery(document).ready(function ($) {
+
+        $('*[data-identifier]').on('click', function () {
+
+            var locoIdentifier = $(this).data('identifier');
+            var expanded = $(this).data("expanded");
+
+            if (!expanded) {
+                var row = this;
+                $(this).data("expanded", true);
+                $(this).children("span").removeClass("glyphicon-plus-sign").addClass("glyphicon-minus-sign");
+
+                $.get('@Url.Action("LocomotiveDetailsId","TrainsPlanesCars")', { locoId: locoIdentifier }, function (markup) {
+                    $(row).closest("tr").after(markup);
+                });
+            }
+            else {
+                $("#LocoDetails").remove();
+                $(this).data("expanded", false);
+                $(this).children("span").removeClass("glyphicon-minus-sign").addClass("glyphicon-plus-sign");
+            }
+        });
+    });
+
+</script>
+
+<!-- Eof -->

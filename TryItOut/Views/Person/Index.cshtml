@@ -1,0 +1,145 @@
+﻿@model TryItOut.ViewModels.PersonViewModel
+
+@{
+    ViewBag.Title = "Person Details";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<style>
+
+    .form-group.required .control-label:after {
+        content: " *";
+        color: black;
+    }
+</style>
+
+<h2>Person Details</h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "PersonDetails", name = "PersonDetails" }))
+{
+    <div class="form-horizontal">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group required">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", id = "name" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-horizontal">
+                    <div class="form-group required">
+                        @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group required">
+                    @Html.LabelFor(model => model.Postcode, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.Postcode, new { htmlAttributes = new { @class = "form-control", id = "postcode" } })
+                        @Html.ValidationMessageFor(model => model.Postcode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nationality, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.Nationality, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Nationality, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group required">
+                    @Html.LabelFor(model => model.Identifier, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.Identifier, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Identifier, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BirthDate, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-offset-1 col-sm-11">
+            @Html.ValidationSummary(false)
+        </div>
+    </div>
+
+    <input id="BtnSave" type="submit" value="Save" class="btn" />
+    <input id="BtnCancel" type="submit" value="Cancel" class="btn" name="btn" formaction="@(Url.Action("PersonCancel"))" formnovalidate="formnovalidate" />
+
+    <span id="BtnShowRegisteredUsers" class="btn">Users</span>
+    <span id="BtnSaveRegisteredUsers" class="btn">Users</span>
+
+} @*<!-- end form -->*@
+
+<script>
+    $(document).ready(function () {
+
+        $("#BtnShowRegisteredUsers").click(function () {
+
+            $.ajax({
+                url: 'http://localhost:50418/api/RegisteredUser',
+                type: 'GET',
+                dataType: 'json',
+                //data: person,
+                success: function (data, textStatus, xhr) {
+                    console.log(data);
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }   
+            });
+        });
+
+        $("#BtnSaveRegisteredUsers").click(function () {
+
+            alert();
+
+            var person = new Object();
+            person.name = $('#name').val();
+            person.postcode = $('#postcode').val();
+
+            $.ajax({
+                url: 'http://localhost:50418/api/RegisteredUser',
+                type: 'POST',
+                dataType: 'json',
+                data: person,
+                success: function (data, textStatus, xhr) {
+                    console.log(data);
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log('Error in Operation');
+                }
+            });
+        });
+
+    });
+</script>

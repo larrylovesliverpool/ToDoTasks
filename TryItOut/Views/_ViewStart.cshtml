@@ -1,0 +1,23 @@
+﻿@*@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}*@
+
+@{
+    string CurrentName = Convert.ToString(HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"]);
+
+    switch (CurrentName)
+    {
+        case "Person":
+            Layout = "~/Views/Shared/_LayoutPerson.cshtml";
+            break;
+        case "Development":
+            Layout = "~/Views/Shared/_LayoutDevelopmentBlank.cshtml";
+            break;
+        case "ToDoTasks":
+            Layout = "~/Views/Shared/_Layout.cshtml";
+            break;
+        default:
+            Layout = "~/Views/Shared/_Layout.cshtml";
+            break;
+    }
+}

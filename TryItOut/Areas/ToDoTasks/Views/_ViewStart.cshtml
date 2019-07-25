@@ -1,0 +1,19 @@
+﻿<!--
+ **********************************************
+ select layout file according to the controller 
+ **********************************************
+-->
+
+@{
+    string CurrentName = Convert.ToString(HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"]);
+
+    switch (CurrentName)
+    {
+        case "ToDoTasks":
+            Layout = "~/Areas/ToDoTasks/Views/Shared/_Layout.cshtml";
+            break;
+        default:
+            Layout = "~/Areas/ToDoTasks/Views/Shared/_Layout.cshtml";
+            break;
+    }
+}

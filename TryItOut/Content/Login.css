@@ -1,0 +1,23 @@
+﻿/* login style */
+
+article h3 {
+    text-align:center;
+}
+
+.LoginMessage {
+    text-align:center;
+    margin:10px;
+    color:red;
+}
+
+.tasklinks {
+    color: black;
+    font-size:x-small;
+    text-align:right;
+}
+
+#Register:hover, #ForgottenPassword:hover {
+    color: blue;
+    font-size: small;
+}
+

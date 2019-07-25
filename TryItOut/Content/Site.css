@@ -1,0 +1,259 @@
+﻿/* ************* */
+/* Site wide CSS */
+/* ************* */
+
+/* HTML */
+
+body {
+    /* will need changing for different pages*/
+}
+
+header{
+}
+
+aside {
+    text-align: center;
+    padding-top: 10px;
+}
+
+footer {
+    background-color:white;
+    color: #ddd;
+    padding:5px;
+    text-align:center;
+}
+
+article {
+    padding:10px;
+}
+
+article img {
+    width:100%;
+    height:100%;
+    box-shadow:6px 6px 8px #777;
+    margin-bottom:20px;
+}
+
+
+/* ********* */
+/* Bootstrap */
+/* ********* */
+
+.navbar {
+    margin-bottom:0px;
+    padding:15px;
+}
+
+
+/* ******** */
+/* Site CSS */
+/* ******** */
+
+.Column-right-top {
+
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.top_menu {
+    background-color: white;
+    color: orange;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: right;
+}
+
+/*is the h4 element*/
+.Column-right-header {
+
+}
+
+.top_menu_list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;  /*rgb(34,34,34);*/
+}
+
+.top_menu_list_item {
+    float: right;
+}
+
+.top_menu_list_item_anchor {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+
+a.top_menu_list_item_anchor:hover {
+    background-color: orange;
+    color: black;
+    text-decoration: none;
+}
+
+.fill-screen {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.content-holder {
+    width:100%;
+    min-height:300px;
+    text-align:center;
+    padding-top:80px;
+}
+
+.fixed-attachment {
+    background-attachment:fixed;
+}
+
+.title-row{
+    position:relative;
+    min-height:300px;
+}
+
+.title-image {
+    position:absolute;
+    padding:20px;
+    top:50%;
+    left:50%;
+    margin-right:-50%;
+    transform:translate(-50%,-50%);
+}
+
+.down-button {
+    position:absolute;
+    bottom:40px;
+    width:100%;
+    text-align: center;
+}
+
+.technology-image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    padding:10px;
+}
+
+.technology-text {
+    padding:10px;
+}
+
+.tat-section {
+}
+
+.tat-section h1 {
+    text-align:center;
+}
+
+.Git-section {
+    margin: 50px;
+}
+
+.Git-element {
+    text-align:center;
+}
+
+.Git-element img {
+    width:150px;
+    height:150px;
+}
+
+
+/* ************* */
+/* media queries */
+/* ************* */
+
+@media (min-width:1200px) {
+
+    .navbar {
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+
+        .navbar img {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+}
+
+@media (max-width:1199px) {
+    .fixed-attachment {
+        background-attachment: scroll;
+    }
+
+    .navbar {
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+
+        .navbar img {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+}
+
+@media (max-width: 991px ) {
+    .Column-right-header {
+    }
+
+    .navbar {
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+
+    .navbar img {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+}
+
+@media (max-width: 767px ) {
+    .navbar {
+        margin: 0px;
+    }
+
+    .navbar-header {
+        position: relative;
+    }
+
+    .navbar img {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+
+    .top_menu {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .technology-image {
+        width: 25%;
+        height: 25%;
+        padding: 10px;
+    }
+
+    .fill-screen {
+        margin: 0px;
+    }
+}
+
+/* ************************ */

@@ -1,0 +1,90 @@
+﻿
+@model TryItOut.ViewModels.RailwayDecoderEditNewViewModel
+
+<h2>Railway Decoder</h2>
+
+<!-- form -->
+@using (Html.BeginForm("RailwayDecoderEditNew", "TrainsPlanesCars", FormMethod.Post))
+{
+    <div class="row">
+        <!-- row has two columns -->
+        <div class="col-md-9">
+            <div class="form-horizontal">
+                <div class="row">
+                    <div class="col-xs-12">
+
+                        <!-- Manufacturer -->
+                        <div class="form-group required">
+                            @Html.LabelFor(model => model.SelectedMadeBy, htmlAttributes: new { @class = "control-label col-md-3 col-lg-3" })
+                            <div class="col-md-6 col-lg-9">
+
+                                @Html.DropDownList("SelectedMadeBy",
+                                                   Model.Manufacturer,
+                                                   "Select",
+                                                   new { @class = "form-control" })
+
+                                @Html.ValidationMessageFor(model => model.SelectedMadeBy, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <!-- Stay A Live -->
+                        <div class="form-group required">
+                            @Html.LabelFor(model => model.SelectedStayaLive, htmlAttributes: new { @class = "control-label col-md-3 col-lg-3" })
+                            <div class="col-md-3 col-lg-9">
+
+                                @Html.DropDownList("SelectedStayALive",
+                                                   Model.StayALive,
+                                                   "Select",
+                                                   new { @class = "form-control" })
+
+                                @Html.ValidationMessageFor(model => model.SelectedStayaLive, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <!-- Connector type -->
+                        <div class="form-group required">
+                            @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-3 col-lg-3" })
+                            <div class="col-md-9 col-lg-9">
+                                @Html.EditorFor(model => model.Type, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="form-group required">
+                            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-3 col-lg-3" })
+                            <div class="col-md-9 col-lg-9">
+                                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-offset-1 col-sm-11">
+                        @Html.ValidationSummary(false)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- Default post back btn -->
+            <input type="submit" value="Submit" class="btn" name="btn" />
+            <!-- Cancel uses formaction for different actionresult in controller and no validation -->
+            <input type="submit" value="Cancel" class="btn" name="btn" formaction="@(Url.Action("LocoType","TrainsPlanescars"))" formnovalidate="formnovalidate" />
+        </div>
+    </div>
+}
+
+
+<!-- form -->

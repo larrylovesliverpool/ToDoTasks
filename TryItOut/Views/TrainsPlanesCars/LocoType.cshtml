@@ -1,0 +1,67 @@
+﻿
+@model TryItOut.ViewModels.LocomotiveTypesViewModel
+
+@{
+    ViewBag.Title = "LocoType";
+    Layout = "~/tryitout/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Types of Locomotives</h2>
+
+@{
+    if (!Model.HasTypes)
+    {
+        <p>@Model.Message.Text</p>
+    }
+    else
+    {
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Classification</th>
+                    <th>Comments</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var locoType in Model.LocomotivesTypes)
+                {
+                    <tr>
+                        <td data-identifier="@locoType.TypeId">@locoType.TypeId</td>
+                        <td data-type="@locoType.Type">@locoType.Type</td>
+                        <td data-classification="@locoType.Classification">@locoType.Classification</td>
+                        <td data-comments="@locoType.Comments">@locoType.Comments</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+
+@using (Html.BeginForm("LocoTypeEdit", "TrainsPlanesCars", FormMethod.Post, new { id = "FormWrapper" }))
+{
+    <input type="hidden" id="identifier" name="Hidden-identifier" />
+
+    <div class="row">
+        <div class="col-sm-12">
+            @Html.ActionLink("New*", "LocoTypeNew", "TrainsPlanesCars", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Back", "index", "Home", null, new { @class = "btn btn-default" })
+        </div>
+    </div>
+}
+
+<script>
+
+    /* Jquery document on load */
+
+    jQuery(document).ready(function ($) {
+
+        $('*[data-identifier]').on('click', function () {
+
+            $("#identifier").val($(this).data('identifier'));
+            $("#FormWrapper").submit();
+        });
+    });
+
+</script>

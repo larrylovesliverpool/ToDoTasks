@@ -1,0 +1,31 @@
+﻿@model TryItOut.Areas.ToDoTasks.ViewModels.ToDoTasksViewModel
+
+@{
+    ViewBag.Title = "ToDo";
+}
+
+<h2>ToDo Tasks</h2>
+
+<div class="row">
+    <div class="col-lg-12">
+        <span class="pull-right">
+            <!-- action link btn required -->
+            @Html.ActionLink("Add Tasks", "ToDoAddTask", "ToDoTasks", null , new { @class = "btn btn-default" })
+        </span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        @if (Model.NumberOfTasks > 0)
+        {
+            @Html.Partial("_DisplayTasks")
+        }
+    </div>
+</div>
+
+@section scripts{
+    @*<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>*@
+
+}
+

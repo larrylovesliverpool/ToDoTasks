@@ -1,0 +1,91 @@
+﻿@model TryItOut.Areas.ToDoTasks.ViewModels.ToDoTasksViewModel
+
+
+<script>
+
+    function NewTableRow() {
+
+        return "<div>Details go here, HTML injection.</div>"
+    }
+
+    $(document).ready(function () {
+
+        var table = $('#ToDoTasksTable').DataTable({});
+
+        $('#ToDoTasksTable tbody').on('click', 'tr', function () {
+
+            var tr = $(this);
+
+            //if ($(this).hasClass('selected')) {
+            //    $(this).removeClass('selected');
+            //}
+            //else {
+            //    table.$('tr.selected').removeClass('selected');
+            //    $(this).addClass('selected');
+            //}
+
+            if ($(this).hasClass('selected')) {
+
+                $(this).removeClass('selected');
+            }
+            else {
+
+                table.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+            }
+
+
+
+            //var tr = $(this).closest('tr');
+
+            var tr = $(this);
+            var row = table.row(tr);
+
+            if (row.child.isShown()) {
+                // This row is already open - close it
+                row.child.hide();
+                tr.removeClass('shown');
+            }
+            else {
+                // Open this row
+                row.child(NewTableRow()).show();
+                tr.addClass('shown');
+            }
+
+        });
+
+    });
+
+</script>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h4><span class="label label-primary">Number of Active Task <span class="badge">@Model.NumberOfTasks</span></span></h4>   
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <table id="ToDoTasksTable" class="table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Description</th>
+                    <th>Due Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var row in Model.Tasks)
+                {
+                <tr>
+                    <td>@row.Identifier</td>
+                    <td>@row.Description</td>
+                    <td></td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- -->

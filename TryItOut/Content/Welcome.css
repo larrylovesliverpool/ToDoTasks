@@ -1,0 +1,19 @@
+﻿
+
+.fill-screen {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.fixed-attachment {
+    background-attachment: fixed;
+}
+.userlocked-button {
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+    text-align: center;
+}
